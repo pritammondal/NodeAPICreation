@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User signup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<!-- TODO for testing purpose using ng-controller will configure the modular app with factory/services, controller, directive app later -->
+<body  ng-app="myApp" ng-controller="Registration"><br/>
+<div class="container well col-md-offset-4 col-md-4 col-md-offset-4">
+  <div>
+	  <h2>Contact Us</h2>
+	  <form role="form">
+	    <div class="form-group">
+	      <label for="name">Name:</label>
+	      <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="userContact.name">
+	    </div>
+	    <div class="form-group">
+	      <label for="mail">Email:</label>
+	      <input type="email" class="form-control" id="mail" placeholder="Enter email" ng-model="userContact.email">
+	    </div>
+	    <div class="form-group">
+	      <label for="desc">Description:</label>
+	      <textarea class="form-control" id="desc" placeholder="Enter Queries" ng-model="userContact.desc"></textarea>
+	    </div>
+	    <button type="submit" class="btn btn-default" ng-click="SendMail(userContact);">Send Mail</button>
+	  </form>
+  </div>
+<!-- TODO Demo purpose asynchronous js file will be loaded here with requirejs-->
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('Registration', function($scope, $http) {
+	    /*$scope.formSubmit = function (user) {
+	    	var UserData = {
+	    		name: user.name,
+	    		username: user.name,
+	    		password: user.password
+	    	};
+			console.log(UserData);
+			$http({
+	          method  : 'POST',
+	          url     : 'devapi/signup',
+	          data    : UserData
+	        })
+	        .success(function(res) {
+	        	$scope.completeResp = true;
+	            $scope.user = {};
+	        });
+		};
+		$scope.login = function (user) {
+			var UserData = {
+	    		username: user.username,
+	    		password: user.password
+	    	};
+	    	$http({
+	          method  : 'POST',
+	          url     : 'devapi/login',
+	          data    : UserData
+	        })
+	        .success(function(res) {
+	        	if (res.success) {
+	        	}
+	        });
+		};
+		$scope.singUp = function () {
+			alert('signup');
+		};*/
+		$scope.SendMail = function (userContact) {
+			$http({
+	          method  : 'POST',
+	          url     : 'devapi/sendmail',
+	          data    : userContact
+	        })
+	        .success(function(res) {
+	        	if (res.success) {
+	        		alert('Mail Send');
+	        	}
+	        });
+		};
+	});
+</script>
+</body>
+</html>
