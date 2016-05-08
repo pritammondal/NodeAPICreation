@@ -4,12 +4,19 @@
   <title>User signup</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+  <script src="scripts/lib/jquery-1.10.0.min.js"></script>
+  <script src="scripts/lib/bootstrap.min.js"></script>
+  <script src="scripts/lib/angular.min.js"></script>
+  <script src="scripts/lib/angular-route.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/testController.js"></script>
 </head>
 <!-- TODO for testing purpose using ng-controller will configure the modular app with factory/services, controller, directive app later -->
-<body  ng-app="myApp" ng-controller="Registration"><br/>
-<div class="container well col-md-offset-4 col-md-4 col-md-offset-4">
+<body  ng-app="myApp"><br/>
+	<div ng-view></div>
+<!--<div class="container well col-md-offset-4 col-md-4 col-md-offset-4">
   <div>
 	  <h2>Contact Us</h2>
 	  <form role="form">
@@ -27,11 +34,11 @@
 	    </div>
 	    <button type="submit" class="btn btn-default" ng-click="SendMail(userContact);">Send Mail</button>
 	  </form>
-  </div>
+  </div>-->
 <!-- TODO Demo purpose asynchronous js file will be loaded here with requirejs-->
 <script>
-	var app = angular.module('myApp', []);
-	app.controller('Registration', function($scope, $http) {
+	//var app = angular.module('myApp', []);
+	//app.controller('Registration', function($scope, $http) {
 	    /*$scope.formSubmit = function (user) {
 	    	var UserData = {
 	    		name: user.name,
@@ -67,7 +74,7 @@
 		$scope.singUp = function () {
 			alert('signup');
 		};*/
-		$scope.SendMail = function (userContact) {
+		/*$scope.SendMail = function (userContact) {
 			$http({
 	          method  : 'POST',
 	          url     : 'devapi/sendmail',
@@ -79,7 +86,8 @@
 	        	}
 	        });
 		};
-	});
+	});*/
+console.info("TODO : Inline JS loaded did not put anything through bower front end entire logic is yet to refactor");
 </script>
 </body>
 </html>
